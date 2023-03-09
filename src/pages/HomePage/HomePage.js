@@ -1,26 +1,44 @@
 import styled from "styled-components"
+import axios from "axios"
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
+
+    const [poster, setPoster] = useState([]);
+
+    useEffect(() => {
+        const url = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
+        const promise = axios.get(url);
+
+        promise.then((res) => {
+            setPoster(res.data)
+            console.log(res.data)
+        });
+        promise.catch((err) => { console.log(err.response.data) });
+    }, [])
+
+    if (poster.length === 0) {
+        return (
+            <>
+                <TelaCarregando>
+                    <img src="https://cdn.dribbble.com/users/712682/screenshots/11956378/media/50c8e606db69f492200555d72b34f308.gif" />
+                </TelaCarregando>
+            </>
+        )
+    }
+
+
+
     return (
         <PageContainer>
             Selecione o filme
 
             <ListContainer>
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
+                {poster.map((p) => (
+                    <MovieContainer key={p.id}>
+                        <img src={p.posterURL} alt={p.title} />
+                    </MovieContainer>
+                ))}
             </ListContainer>
 
         </PageContainer>
@@ -57,5 +75,16 @@ const MovieContainer = styled.div`
     img {
         width: 130px;
         height: 190px;
+    }
+`
+
+const TelaCarregando = styled.div`
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 400px;
+        height: 400px;
     }
 `
