@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import axios from "axios"
 import { useEffect, useState } from "react";
+import loading from "../../assets/loading.gif"
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
 
@@ -21,7 +23,7 @@ export default function HomePage() {
         return (
             <>
                 <TelaCarregando>
-                    <img src="https://cdn.dribbble.com/users/712682/screenshots/11956378/media/50c8e606db69f492200555d72b34f308.gif" />
+                    <img src={loading} />
                 </TelaCarregando>
             </>
         )
@@ -35,9 +37,11 @@ export default function HomePage() {
 
             <ListContainer>
                 {poster.map((p) => (
-                    <MovieContainer key={p.id}>
+                    <Link to={`/sessoes/${p.id}`} key={p.id}>
+                    <MovieContainer>
                         <img src={p.posterURL} alt={p.title} />
                     </MovieContainer>
+                    </Link>
                 ))}
             </ListContainer>
 
