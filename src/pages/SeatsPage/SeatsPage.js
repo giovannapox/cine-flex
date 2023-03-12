@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 import axios from "axios"
 import loading from "../../assets/loading.gif"
@@ -33,6 +33,10 @@ export default function SeatsPage() {
         )
     }
 
+    function fazerReserva () {
+        alert('oi')
+    }
+
     return (
         <PageContainer>
             Selecione o(s) assento(s)
@@ -60,15 +64,16 @@ export default function SeatsPage() {
 
             <FormContainer>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
+                <input data-test="client-name" placeholder="Digite seu nome..." />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
+                <input data-test="client-cpf" placeholder="Digite seu CPF..." />
 
-                <button>Reservar Assento(s)</button>
+                <button data-test="book-seat-btn" onClick={fazerReserva}>Reservar Assento(s)</button>
+
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={filme.movie.posterURL} alt={filme.movie.title} />
                 </div>

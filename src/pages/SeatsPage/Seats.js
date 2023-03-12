@@ -16,7 +16,7 @@ export default function Seats ({name, available}) {
     }
 
     return (
-        <SeatItem onClick={selecionarAssento} selecionado={selecionado} available={available}>{name}</SeatItem>
+        <SeatItem data-test="seat" onClick={selecionarAssento} selecionado={selecionado} available={available}>{name}</SeatItem>
     )
 } 
 
