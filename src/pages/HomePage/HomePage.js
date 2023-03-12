@@ -14,7 +14,6 @@ export default function HomePage() {
 
         promise.then((res) => {
             setPoster(res.data)
-            console.log(res.data)
         });
         promise.catch((err) => { console.log(err.response.data) });
     }, [])
