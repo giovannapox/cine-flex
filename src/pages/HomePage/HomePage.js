@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import loading from "../../assets/loading.gif"
 import { Link } from "react-router-dom";
 
-export default function HomePage() {
+export default function HomePage({setInfoFilme}) {
 
     const [poster, setPoster] = useState([]);
 
     useEffect(() => {
+        setInfoFilme({lugares: []})
         const url = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
         const promise = axios.get(url);
 

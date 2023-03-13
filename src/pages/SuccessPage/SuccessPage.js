@@ -1,31 +1,43 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+import loading from "../../assets/loading.gif"
 
-export default function SuccessPage() {
+export default function SuccessPage({ infoFilme }) {
+    console.log(infoFilme)
+    if (infoFilme === []) {
+        return (
+            <>
+                <TelaCarregando>
+                    <img src={loading} />
+                </TelaCarregando>
+            </>
+        )
+    }
 
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
-                <p>Tudo em todo lugar ao mesmo tempo</p>
-                <p>03/03/2023 - 14:00</p>
+                <p>{infoFilme.titulo}</p>
+                <p>{infoFilme.data} - {infoFilme.hora}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
-                <p>Assento 01</p>
-                <p>Assento 02</p>
-                <p>Assento 03</p>
+                {infoFilme.lugares.map((l) => <p key={l}>Assento {l}</p>)}
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
-                <p>Nome: Letícia Chijo</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {infoFilme.nome}</p>
+                <p>CPF: {infoFilme.cpf}</p>
             </TextContainer>
 
-            <button>Voltar para Home</button>
+            <Link data-test="go-home-btn" to={`/`}>
+                <button>Voltar para Home</button>
+            </Link>
         </PageContainer>
     )
 }
@@ -67,5 +79,15 @@ const TextContainer = styled.div`
     strong {
         font-weight: bold;
         margin-bottom: 10px;
+    }
+`
+const TelaCarregando = styled.div`
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 400px;
+        height: 400px;
     }
 `

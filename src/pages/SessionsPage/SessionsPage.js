@@ -16,7 +16,6 @@ export default function SessionsPage() {
         promise.then(res => {
             setFilme(res.data)
             setSessoes(res.data.days)
-            console.log(res.data.days)
         }
         )
         promise.catch(err => console.log(err.response.data))

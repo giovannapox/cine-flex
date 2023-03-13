@@ -4,16 +4,18 @@ import SeatsPage from "./pages/SeatsPage/SeatsPage"
 import SessionsPage from "./pages/SessionsPage/SessionsPage"
 import SuccessPage from "./pages/SuccessPage/SuccessPage"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { useState } from "react"
 
 export default function App() {
+    const [infoFilme, setInfoFilme] = useState({lugares: []})
     return (
         <BrowserRouter>
             <NavContainer><Link to="/">CINEFLEX</Link></NavContainer>
             <Routes>
-                <Route path="/" element={<HomePage />}/>
+                <Route path="/" element={<HomePage setInfoFilme={setInfoFilme} />}/>
                 <Route path="/sessoes/:idFilme" element={<SessionsPage />}/>
-                <Route path="/assentos/:idSessao" element={<SeatsPage />}/>
-                <Route path="/sucesso" element={<SuccessPage />}/>
+                <Route path="/assentos/:idSessao" element={<SeatsPage infoFilme={infoFilme} setInfoFilme={setInfoFilme}/>}/>
+                <Route path="/sucesso" element={<SuccessPage infoFilme={infoFilme}/>}/>
             </Routes>
         </BrowserRouter>
     )

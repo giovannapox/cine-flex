@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import axios from "axios"
 import loading from "../../assets/loading.gif"
 import Seats from "./Seats"
 
-export default function SeatsPage() {
+export default function SeatsPage({ infoFilme, setInfoFilme }) {
     const { idSessao } = useParams()
+    const navigate = useNavigate()
     const [filme, setFilme] = useState(undefined)
     const [assentos, setAssentos] = useState(undefined)
+    const [reserva, setReserva] = useState({ ids: [], name: "", cpf: ""})
 
 
     useEffect(() => {
+
         const url = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`
         const promise = axios.get(url)
         promise.then(res => {
             setFilme(res.data)
-            console.log(res.data.seats)
+            console.log(res.data)
             setAssentos(res.data.seats)
         }
         )
@@ -33,9 +36,10 @@ export default function SeatsPage() {
         )
     }
 
-    function fazerReserva () {
-        alert('oi')
-    }
+
+    console.log(reserva)
+    console.log(infoFilme)
+
 
     return (
         <PageContainer>
@@ -43,34 +47,57 @@ export default function SeatsPage() {
 
             <SeatsContainer>
                 {assentos.map((a) =>
-                 <Seats name={a.name} key={a.name} available={a.isAvailable}/>
-                 )}
+                    <Seats name={a.name} infoFilme={infoFilme} setInfoFilme={setInfoFilme} key={a.name} available={a.isAvailable} setReserva={setReserva} reserva={reserva} id={a.id} />
+                )}
             </SeatsContainer>
 
             <CaptionContainer>
                 <CaptionItem>
-                    <CaptionCircle/>
+                    <CaptionCircle />
                     Selecionado
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle/>
+                    <CaptionCircle />
                     Disponível
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle/>
+                    <CaptionCircle />
                     Indisponível
                 </CaptionItem>
             </CaptionContainer>
 
             <FormContainer>
-                Nome do Comprador:
-                <input data-test="client-name" placeholder="Digite seu nome..." />
+                <form onSubmit={fazerReserva}>
+                    <label htmlFor="nome">Nome do Comprador:</label>
+                    <input
+                        id="nome"
+                        data-test="client-name"
+                        type="text"
+                        placeholder="Digite seu nome..."
+                        required
+                        value={reserva.name}
+                        onChange={e => {
+                            setReserva({ ...reserva, name: e.target.value })
+                            setInfoFilme({ ...infoFilme, nome: e.target.value })
+                        }}
+                    />
 
-                CPF do Comprador:
-                <input data-test="client-cpf" placeholder="Digite seu CPF..." />
+                    <label htmlFor="cpf">CPF do Comprador:</label>
+                    <input
+                        id="cpf"
+                        data-test="client-cpf"
+                        type="number"
+                        placeholder="Digite seu CPF..."
+                        required
+                        value={reserva.cpf}
+                        onChange={e => {
+                            setReserva({ ...reserva, cpf: e.target.value })
+                            setInfoFilme({ ...infoFilme, cpf: e.target.value })
+                        }}
+                    />
 
-                <button data-test="book-seat-btn" onClick={fazerReserva}>Reservar Assento(s)</button>
-
+                    <button type="submit" data-test="book-seat-btn">Reservar Assento(s)</button>
+                </form>
             </FormContainer>
 
             <FooterContainer data-test="footer">
@@ -85,7 +112,19 @@ export default function SeatsPage() {
 
         </PageContainer>
     )
+    function fazerReserva(e) {
+        e.preventDefault();
+        setInfoFilme({ ...infoFilme, titulo: filme.movie.title, data: filme.day.date, hora: filme.name})
+        const promise = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", reserva)
+        promise.then(() => {
+            setReserva({ ids: [], name: "", cpf: "" })
+            navigate("/sucesso")
+        })
+        promise.catch(() => alert("Não foi possivel finalizar a compra, tente novamente mais tarde"))
+    }
 }
+
+
 
 const PageContainer = styled.div`
     display: flex;
@@ -120,6 +159,9 @@ const FormContainer = styled.div`
     }
     input {
         width: calc(100vw - 60px);
+    }
+    a{
+        text-decoration: none;
     }
 `
 const CaptionContainer = styled.div`
