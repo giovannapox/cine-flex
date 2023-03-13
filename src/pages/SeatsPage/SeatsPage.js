@@ -19,7 +19,6 @@ export default function SeatsPage({ infoFilme, setInfoFilme }) {
         const promise = axios.get(url)
         promise.then(res => {
             setFilme(res.data)
-            console.log(res.data)
             setAssentos(res.data.seats)
         }
         )
@@ -35,12 +34,7 @@ export default function SeatsPage({ infoFilme, setInfoFilme }) {
             </>
         )
     }
-
-
-    console.log(reserva)
-    console.log(infoFilme)
-
-
+    
     return (
         <PageContainer>
             Selecione o(s) assento(s)

@@ -15,6 +15,13 @@ export default function Seats({ name, available, setReserva, id, reserva, setInf
             setInfoFilme({ ...infoFilme, lugares: [...infoFilme.lugares, name] })
             setReserva({ ...reserva, ids: [...reserva.ids, id]})
         }
+
+        if(reserva.ids.includes(id)){
+            const excluir = reserva.ids.filter((e) => e !== id);
+            const assentos = infoFilme.lugares.filter((e) => e !== name)
+            setInfoFilme({...infoFilme, lugares:assentos.sort()})
+            setReserva({...reserva, ids: excluir})
+        }
     }
 
 

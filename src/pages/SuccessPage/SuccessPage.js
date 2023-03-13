@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import loading from "../../assets/loading.gif"
 
 export default function SuccessPage({ infoFilme }) {
-    console.log(infoFilme)
+
     if (infoFilme === []) {
         return (
             <>
