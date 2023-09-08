@@ -19,7 +19,7 @@ Now your cinema experience has become much easier. From the comfort of your home
   <img align="center" alt="React" height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png">
   <img align="center" alt="Styled Components" height="50" width="50" src="https://cdn.worldvectorlogo.com/logos/styled-components-1.svg">
   <img align="center" alt="React Router" height="30" width="50" src="https://static-00.iconduck.com/assets.00/react-router-icon-512x279-zswz065s.png">
-  <img align="center" alt="Axios" height="30" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Axios_%28computer_library%29_logo.svg/1200px-Axios_%28computer_library%29_logo.svg.png">
+  <img align="center" alt="Axios" height="30" width="50" src="https://user-images.githubusercontent.com/8939680/57233884-20344080-6fe5-11e9-8df3-0df1282e1574.png">
 </div>
 
 ## How to run
