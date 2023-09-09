@@ -1,7 +1,7 @@
 # CineFlex
 CineFlex is a Single-Page Application (SPA) for a cinema, where you can select movies, sessions, and much more!
 
-<img src="https://s11.gifyu.com/images/S4z5K.gif" />
+<img src="./src/assets/cineflex.gif" />
 
 ## About
 
