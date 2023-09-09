@@ -4,6 +4,7 @@ CineFlex is a Single-Page Application (SPA) for a cinema, where you can select m
 <div align="center">
 <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZ5YnQwdTltOTJncDE5eG14c2Q1NmllNWM5cmRjNWRmcW1tcXdneiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/unIqBfPmQSiDqdEsej/giphy.gif" />
 </div>
+
 ## About
 
 Now your cinema experience has become much easier. From the comfort of your home, you can purchase tickets, avoiding lines. Using the CineFlex app, you can select your movie, your session, your seats, and complete the order. The following features are listed below:
