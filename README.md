@@ -1,7 +1,7 @@
 # CineFlex
 CineFlex is a Single-Page Application (SPA) for a cinema, where you can select movies, sessions, and much more!
 
-<img src="https://gifyu.com/image/S4z5K" />
+<img src="https://s11.gifyu.com/images/S4z5K.gif" />
 
 ## About
 
@@ -17,11 +17,11 @@ Now your cinema experience has become much easier. From the comfort of your home
 ## Technologies
   The following tools, frameworks and programming language were used in the construction of the project: 
 <div align="center">
-  <img align="center" alt="Js" height="50" width="50" src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
-  <img align="center" alt="React" height="50" width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png">
-  <img align="center" alt="Styled Components" height="50" width="50" src="https://cdn.worldvectorlogo.com/logos/styled-components-1.svg">
-  <img align="center" alt="React Router" height="30" width="50" src="https://static-00.iconduck.com/assets.00/react-router-icon-512x279-zswz065s.png">
-  <img align="center" alt="Axios" height="50" width="50" src="https://user-images.githubusercontent.com/8939680/57233884-20344080-6fe5-11e9-8df3-0df1282e1574.png">
+  <img align="center" alt="Js" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
+  <img align="center" alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+  <img align="center" alt="Styled Components" src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+  <img align="center" alt="React Router"src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=whit">
+  <img align="center" alt="Axios" src="https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white">
 </div>
 
 ## How to run
